@@ -68,10 +68,6 @@ public class DocumentSection {
     @ManyToOne
     private PeerEvaluationUser updatedBy;
 
-
-    public DocumentSection() {
-    }
-
     /* ---------- Convenience helpers ---------- */
     public void addRequirementArtifact(RequirementArtifact artifact) {
         this.requirementArtifacts.add(artifact);

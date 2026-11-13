@@ -7,6 +7,7 @@ public class RatingAverage {
 
 
     public RatingAverage() {
+        // Required by JPA.
     }
 
     public RatingAverage(Integer criterionId, Double averageScore) {

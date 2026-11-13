@@ -51,10 +51,6 @@ public class RequirementDocument {
     @LastModifiedDate
     private Instant updatedAt;
 
-
-    public RequirementDocument() {
-    }
-
     public void addSection(DocumentSection section) {
         if (section == null) return;
 
