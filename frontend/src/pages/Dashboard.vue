@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import MenuItems from '@/components/MenuItems.vue'
 import TopNavigationBar from '@/components/TopNavigationBar.vue'
+import { menuCollapseKey } from '@/injectionKeys'
 import { useMenuRouteStore } from '@/stores/menuRoute'
 import { computed, provide, ref } from 'vue'
 
@@ -55,7 +56,7 @@ const logoStyle = computed(() => {
   }
 })
 
-provide('menuCollapse', { isCollapse, toggleCollapse })
+provide(menuCollapseKey, { isCollapse, toggleCollapse })
 
 const appVersion = __APP_VERSION__
 </script>

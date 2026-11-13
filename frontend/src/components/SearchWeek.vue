@@ -88,10 +88,12 @@ onMounted(async () => {
   // Get all weeks in the current section
   allWeeks.value = getAllWeeksInSection(currentSection)
 
-  if (allWeeks.value.length > 0) {
+  const first = allWeeks.value[0]
+  const last = allWeeks.value[allWeeks.value.length - 1]
+  if (first && last) {
     // allWeeks is sorted by weekNumber, so the first and last weeks are the first and last elements
-    firstWeek.value = allWeeks.value[0]
-    lastWeek.value = allWeeks.value[allWeeks.value.length - 1]
+    firstWeek.value = first
+    lastWeek.value = last
   }
 })
 
@@ -135,16 +137,22 @@ const findWeekIndex = () => {
 const goToPreviousWeek = () => {
   const index = findWeekIndex()
   if (index > 0) {
-    selectedWeekNumber.value = allWeeks.value[index - 1].weekNumber
-    emit('search')
+    const previousWeek = allWeeks.value[index - 1]
+    if (previousWeek) {
+      selectedWeekNumber.value = previousWeek.weekNumber
+      emit('search')
+    }
   }
 }
 
 const goToNextWeek = () => {
   const index = findWeekIndex()
   if (index >= 0 && index < allWeeks.value.length - 1) {
-    selectedWeekNumber.value = allWeeks.value[index + 1].weekNumber
-    emit('search')
+    const nextWeek = allWeeks.value[index + 1]
+    if (nextWeek) {
+      selectedWeekNumber.value = nextWeek.weekNumber
+      emit('search')
+    }
   }
 }
 
