@@ -7,4 +7,9 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+  <!-- Project Pulse deliberately shares mutable references: Hibernate tracks entity associations
+       through their live collections, application code updates those associations through getters,
+       and Spring beans retain injected collaborators by identity. Defensive copies would break
+       those framework contracts and the project's established update model. -->
+  <Match><Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/></Match>
 </FindBugsFilter>
