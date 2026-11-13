@@ -16,6 +16,7 @@ public class Result {
 
 
     public Result() {
+        // Required by Jackson for deserialization.
     }
 
     public Result(boolean flag, Integer code, String message) {

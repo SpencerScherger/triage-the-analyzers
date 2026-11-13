@@ -65,13 +65,18 @@ import { useRouter } from 'vue-router'
 import { useTokenStore } from '@/stores/token'
 import { useUserInfoStore } from '@/stores/userInfo'
 import { useSettingsStore } from '@/stores/settings'
+import { menuCollapseKey } from '@/injectionKeys'
 const router = useRouter()
 const tokenStore = useTokenStore()
 const userInfoStore = useUserInfoStore()
 const settingsStore = useSettingsStore()
 
 import { inject } from 'vue'
-const { isCollapse, toggleCollapse } = inject('menuCollapse')
+const menuCollapse = inject(menuCollapseKey)
+if (!menuCollapse) {
+  throw new Error('TopNavigationBar must be rendered within the dashboard layout.')
+}
+const { isCollapse, toggleCollapse } = menuCollapse
 
 const refresh = () => {
   router.go(0)
